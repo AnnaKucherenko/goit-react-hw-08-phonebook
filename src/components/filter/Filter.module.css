@@ -1,0 +1,9 @@
+.filterInput{
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+}
+.input:focus {
+    border: 3px solid rgb(0, 191, 255);
+    box-shadow: 1px 1px 2px 0 rgb(0, 89, 255);
+}
