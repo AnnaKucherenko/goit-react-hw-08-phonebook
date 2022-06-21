@@ -3,12 +3,12 @@ import {useForm} from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { registerUser } from '../Redax/auth/auth-operetions';
-import { setUser } from '../Redax/auth/auth-slice';
+import { registerUser } from '../../Redax/auth/auth-operetions';
+import { setUser } from '../../Redax/auth/auth-slice';
 
 // import { authOperations } from '../redux/auth';
 // import {useCreateUserMutation} from '../Redax/auth/auth-slice';
-import style from '../pages/Pages.module.css';
+import style from '../RegisterPage/RegisterPage.module.css';
 
 const registerSchema = yup.object().shape({
   name: yup.string().required('Будьласка вкажіть ім`я'),
@@ -82,14 +82,14 @@ export default function RegisterView() {
   // };
 
   return (
-    <div>
-      <h1>Зареєструйтесь будьласка</h1>
-
-      <form className={style.form} onSubmit={handleSubmit(onSubmit)} >
+    <div className={style.container}>
+      <h1 className={style.title}>Зареєструйтесь будьласка</h1>
+      <div className={style.container_form}>
+        <form className={style.form} onSubmit={handleSubmit(onSubmit)} >
         <label htmlFor="name" className={style.label}>
           Ім`я
-        <input {...register('name')} type="text" name="name" autoComplete='true'/>
-        {errors.name && <p>{errors.name.message}</p>}</label>
+        <input {...register('name')} type="text" name="name" autoComplete='true' className={style.input}/>
+        {errors.name && <p className={style.errors}>{errors.name.message}</p>}</label>
         
 
         <label className={style.label}>
@@ -99,9 +99,9 @@ export default function RegisterView() {
             name="email"
             {...register('email')}
             autoComplete='true'
-            
+            className={style.input}
           />
-          {errors.email && <p>{errors.email.message}</p>}
+          {errors.email && <p className={style.errors}>{errors.email.message}</p>}
         </label>
 
         <label className={style.label}>
@@ -111,13 +111,15 @@ export default function RegisterView() {
             type="password"
             name="password"
             autoComplete="current-password"
-            
+            className={style.input}
           />
-          {errors.password && <p>{errors.password.message}</p>}
+          {errors.password && <p className={style.errors}>{errors.password.message}</p>}
         </label>
 
-        <button type="submit">Зареєструватись</button>
+        <button type="submit" className={style.button}>Зареєструватись</button>
       </form>
+      </div>
+      
     </div>
   );
 }

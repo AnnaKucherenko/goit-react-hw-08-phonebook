@@ -14,7 +14,7 @@ function Filter() {
     
     return (
         <label className={styles.filterInput}>
-            Find contacts by name
+            Пошук контакту за ім`ям
             <input 
             type="text" 
             // value={filter} 

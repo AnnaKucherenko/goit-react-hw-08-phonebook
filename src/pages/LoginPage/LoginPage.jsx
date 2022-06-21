@@ -2,7 +2,7 @@ import { useState } from 'react';
 // import {useLoginUserMutation} from '../Redax/auth/auth-slice';
 // import { useDispatch } from 'react-redux';
 // import { authOperations } from '../redux/auth';
-
+import style from '../LoginPage/LoginPage.module.css'
 
 export default function LoginView() {
   // const dispatch = useDispatch();
@@ -43,11 +43,11 @@ export default function LoginView() {
   };
 
   return (
-    <div>
-      <h1>Сторінка логіна</h1>
-
-      <form onSubmit={handleSubmit}  autoComplete="off">
-        <label >
+    <div className={style.container}>
+      <h1 className={style.title}>Введіть логін та пароль</h1>
+      <div className={style.container_form}>
+        <form onSubmit={handleSubmit}  autoComplete="off">
+        <label className={style.label}>
           Пошта
           <input
             type="email"
@@ -55,10 +55,11 @@ export default function LoginView() {
             value={email}
             autoComplete='true'
             onChange={handleChange}
+            className={style.input}
           />
         </label>
 
-        <label >
+        <label className={style.label}>
           Пароль
           <input
             type="password"
@@ -66,11 +67,14 @@ export default function LoginView() {
             value={password}
             autoComplete="current-password"
             onChange={handleChange}
+            className={style.input}
           />
         </label>
 
-        <button type="submit" >Увійти</button>
+        <button type="submit" className={style.button} >Увійти</button>
       </form>
+      </div>
+      
     </div>
   );
 }

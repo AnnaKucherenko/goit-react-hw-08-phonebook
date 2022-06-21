@@ -22,7 +22,7 @@ const Navigation = () => (
           : style.link;
       }}
     >
-      Замітки
+      Мої контакти
     </NavLink>
   </nav>
 );
