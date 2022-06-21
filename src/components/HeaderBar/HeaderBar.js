@@ -8,7 +8,7 @@ import style from '../HeaderBar/HeaderBar.module.css';
 export default function AppBar() {
 //   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   return (
-    <header>
+    <header className={style.header}>
       <Navigation />
       <AuthNav/>
       <UserMenu/>

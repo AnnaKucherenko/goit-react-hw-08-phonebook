@@ -1,19 +1,73 @@
-import { configureStore} from "@reduxjs/toolkit";
-import contactsReducer from "./contacts";
-import { setupListeners } from "@reduxjs/toolkit/dist/query";
+import { configureStore, combineReducers} from "@reduxjs/toolkit";
+import { persistStore, 
+    persistReducer,
+    FLUSH,
+    REHYDRATE,
+    PAUSE,
+    PERSIST,
+    PURGE,
+    REGISTER,
+} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import contactsReducer  from './contacts';
+import authReducer from './auth/auth-slice';
 import { contactsApi } from "./contactsSlice";
 
-const store = configureStore({
-    reducer:{
-        contacts:contactsReducer,
+const authPersistConfig = {
+    key: 'user',
+    storage,
+    whitelist: ['auth', 'contacts'],
+};
+
+const rootReducer = combineReducers({
+    auth: authReducer,
+    contacts: contactsReducer,
+});
+
+const persistedReducer = persistReducer(authPersistConfig,rootReducer);
+  
+export const store = configureStore({
+    reducer: {
+        persistedReducer,
         [contactsApi.reducerPath]: contactsApi.reducer,
     },
     middleware: getDefaultMiddleware =>[
-        ...getDefaultMiddleware(),
-        contactsApi.middleware,
+                ...getDefaultMiddleware({
+                      serializableCheck: {
+                        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+                      },
+                      
+                }),
+                contactsApi.middleware,
+                
     ],
+    
 });
+  
+export const persistor = persistStore(store);
 
-setupListeners(store.dispatch);
 
-export default store;
+//RTC----------------------
+
+// import { configureStore} from "@reduxjs/toolkit";
+// import contactsReducer from "./contacts";
+// import { setupListeners } from "@reduxjs/toolkit/dist/query";
+// import { contactsApi } from "./contactsSlice";
+// import { userApi } from "./auth/auth-slice";
+
+// const store = configureStore({
+//     reducer:{
+//         contacts:contactsReducer,
+//         [contactsApi.reducerPath]: contactsApi.reducer,
+//         [userApi.reducerPath]: userApi.reducer,
+//     },
+//     middleware: getDefaultMiddleware =>[
+//         ...getDefaultMiddleware(),
+//         contactsApi.middleware,
+//         userApi.middleware,
+//     ],
+// });
+
+// setupListeners(store.dispatch);
+
+// export default store;

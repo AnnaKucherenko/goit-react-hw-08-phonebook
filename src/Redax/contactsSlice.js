@@ -2,45 +2,50 @@ import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
 
 export const contactsApi = createApi({
     reducerPath: 'contactsApi',
-    baseQuery: fetchBaseQuery({baseUrl:'https://62a71619bedc4ca6d7c19d15.mockapi.io/',
+    baseQuery: fetchBaseQuery({baseUrl:'https://connections-api.herokuapp.com',
     }),
     tagTypes: ['Contact'],
     endpoints: builder => ({
         fetchContacts: builder.query({
-            query: ()=>`/contacts`,
+            query: (authorization)=>`/contacts`,
             providesTags: ['Contact'],
         }),
         deleteContact: builder.mutation({
-            query: contactId=>({
+            query: ({contactId, authorization })=>({
                 url:`/contacts/${contactId}`,
                 method: 'DELETE',
             }),
             invalidatesTags:['Contact'],
         }),
         addContact: builder.mutation({
-            query:  data => ({
+            query:  ({data, authorization}) => ({
                 url: '/contacts',
                 method: 'POST',
                 body: ({
                     name:data.contactName,
-                    phone:data.contactPhone,
+                    number:data.contactPhone,
                 }),
             }),
             invalidatesTags:['Contact'],
         }),
-        filterContact: builder.mutation({
-            query:  ({  ...patch }) => ({
-                url: '/contacts',
+        updateContact: builder.mutation({
+            query:  ({contactId, data, authorization}) => ({
+                url:`/contacts/${contactId}`,
                 method: 'PATCH',
-                body: patch,
+                body: ({
+                    name:data.contactName,
+                    number:data.contactPhone,
+                }),
             }),
             invalidatesTags:['Contact'],
         }),
+        
     }),
 });
 
 export const {
     useFetchContactsQuery, 
     useDeleteContactMutation, 
-    useAddContactMutation
+    useAddContactMutation,
+    useUpdateContactMutation,
 } = contactsApi;

@@ -24,11 +24,11 @@ export default function FormAddContact ({contacts}){
         const contactPhone = e.currentTarget.elements.number.value;
         const contactData = {contactName,contactPhone};
         const isFindContact = contacts.find(contact=>contact.name===name);
-        if (isFindContact) {
-            alert(`${name} is already in contacts`);
-        } else {
+        // if (isFindContact) {
+        //     alert(`${name} is already in contacts`);
+        // } else {
             addContact(contactData);
-        }
+        // }
         
         reset();
     }

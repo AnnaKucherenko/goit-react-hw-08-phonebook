@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import HomePage  from './pages/HomePage';
+import HomePage  from './pages/HomePage/HomePage';
 import RegisterPage  from './pages/RegisterPage';
 import LoginPage  from './pages/LoginPage';
 import { ContactsPage } from './pages/ContactsPage';
@@ -12,9 +12,9 @@ function App() {
         <HeaderBar/>
         <Routes>
           <Route exact path="/" element={<HomePage/>} />
-          <Route path="/register" element={<RegisterPage/>} />
-          <Route path="/login" element={<LoginPage/>} />
-          <Route path="/contacts" element={<ContactsPage/>} />
+          <Route path="register" element={<RegisterPage/>} />
+          <Route path="login" element={<LoginPage/>} />
+          <Route path="contacts" element={<ContactsPage/>} />
         </Routes>
       </div>
       
