@@ -23,7 +23,7 @@ export default function FormAddContact ({contacts}){
         const contactName = e.currentTarget.elements.name.value;
         const contactPhone = e.currentTarget.elements.number.value;
         const contactData = {contactName,contactPhone};
-        const isFindContact = contacts.find(contact=>contact.name===name);
+        // const isFindContact = contacts.find(contact=>contact.name===name);
         // if (isFindContact) {
         //     alert(`${name} is already in contacts`);
         // } else {
