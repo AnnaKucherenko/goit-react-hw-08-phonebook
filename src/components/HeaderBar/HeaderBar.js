@@ -5,7 +5,7 @@ import AuthNav from '../AuthNav/AuthNav';
 // import { authSelectors } from '../redux/auth';
 import style from '../HeaderBar/HeaderBar.module.css';
 
-export default function AppBar() {
+export default function HeaderBar() {
 //   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   return (
     <header className={style.header_bar}>

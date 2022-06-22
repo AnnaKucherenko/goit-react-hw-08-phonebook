@@ -1,8 +1,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import defaultImgLogo from '../Navigation/defaultImgLogo.png'
 import style from '../Navigation/Navigation.module.css';
 
+
+const logo = defaultImgLogo;
 const Navigation = () => (
+  
   <nav>
     <NavLink to="/"
     className={({ isActive }) => {
@@ -15,6 +19,7 @@ const Navigation = () => (
     </NavLink>
 
     <NavLink
+    
       to="/contacts"
       className={({ isActive }) => {
         return isActive
@@ -22,7 +27,13 @@ const Navigation = () => (
           : style.link;
       }}
     >
-      Мої контакти
+      <div className={style.nav_contacts}>
+        Мої контакти
+        <div className={style.logo}>
+          <img src={logo} alt="" width="19" className={style.image}></img>
+        </div>
+      </div>
+           
     </NavLink>
   </nav>
 );

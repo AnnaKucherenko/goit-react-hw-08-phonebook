@@ -1,8 +1,8 @@
-// import { Link } from 'react-router-dom';
 import {useForm} from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { useNavigate } from 'react-router-dom';
 import { registerUser } from '../../Redax/auth/auth-operetions';
 import { setUser } from '../../Redax/auth/auth-slice';
 
@@ -20,6 +20,7 @@ const registerSchema = yup.object().shape({
 });
 
 export default function RegisterView() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { register, handleSubmit, formState } = useForm({
     resolver: yupResolver(registerSchema),
@@ -32,6 +33,7 @@ export default function RegisterView() {
     try {
       const newUser = await registerUser({ name, email, password });
       dispatch(setUser(newUser));
+      navigate("/", { replace: true });
       
     } catch (error) {
       console.warn(error);

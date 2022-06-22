@@ -25,7 +25,8 @@
     cursor: pointer;
 }
 
-.buttontForm:hover {
+.buttontForm:hover,
+.buttontForm:focus {
     background-color: rgb(118, 121, 122);;
     color: white;
 }
