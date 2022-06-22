@@ -14,12 +14,14 @@ function Filter() {
     
     return (
         <label className={styles.filterInput}>
-            Пошук контакту за ім`ям
+            
             <input 
             type="text" 
             // value={filter} 
             onChange={changeFilter} 
-            className={styles.input}>
+            className={styles.input}
+            placeholder="Пошук контакту за ім`ям"
+            >
             </input>
         </label>
     )

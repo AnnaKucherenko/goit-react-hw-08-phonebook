@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useAddContactMutation } from 'Redax/contactsSlice';
 import styles from './FormAddContact.module.css';
 
-export default function FormAddContact ({contacts}){
+export default function FormAddContact ({contacts, onClose}){
     const [name, setName] = useState('');
     const [number, setNumber] = useState('');
     const [addContact, {isLoading}] = useAddContactMutation();
@@ -28,6 +28,7 @@ export default function FormAddContact ({contacts}){
         //     alert(`${name} is already in contacts`);
         // } else {
             addContact(contactData);
+            onClose();
         // }
         
         reset();
@@ -54,7 +55,7 @@ export default function FormAddContact ({contacts}){
                             required
                             value={name}
                             onChange={handleChange}
-                            className={styles.input}
+                            className={styles.inputModal}
                         />
                     </div>
                     <div className={styles.inputForm}>
@@ -69,7 +70,7 @@ export default function FormAddContact ({contacts}){
                             required
                             value={number}
                             onChange={handleChange}
-                            className={styles.input}
+                            className={styles.inputModal}
                         />
                     </div>
                 <button type='submit' className={styles.buttontForm} disabled={isLoading}>Add contact</button>

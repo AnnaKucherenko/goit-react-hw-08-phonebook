@@ -58,7 +58,7 @@
 .buttonLogin:hover,
 .button:focus,
 .buttonLogin:focus {
-    background-color: rgb(146, 160, 161);
+    background-color: rgb(127, 202, 186);
   color: white;
   cursor: pointer;
 }
