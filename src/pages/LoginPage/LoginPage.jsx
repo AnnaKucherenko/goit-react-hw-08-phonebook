@@ -1,15 +1,18 @@
 import { useState } from 'react';
-// import {useLoginUserMutation} from '../Redax/auth/auth-slice';
-// import { useDispatch } from 'react-redux';
-// import { authOperations } from '../redux/auth';
+import { useLocation, useNavigate, Navigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginUser } from 'Redax/auth/auth-operetions';
+
 import style from '../LoginPage/LoginPage.module.css'
 
 export default function LoginView() {
-  // const dispatch = useDispatch();
+  const token = useSelector((state) => state.persistedReducer.auth.token);
+  const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-//   const [loginUser, setLoginUser] = useState('');
-//   const [loginUser, error] = useLoginUserMutation();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const redirectPath = location.state ?? '/';
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
@@ -22,25 +25,21 @@ export default function LoginView() {
     }
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // const userEmail = e.currentTarget.elements.email.value;
-    // const userPassword = e.currentTarget.elements.password.value;
-    // const userData = {userEmail, userPassword};
-    
-    // loginUser(userData)
-    // .unwrap()
-    //   .catch((error) => {
-    //     if(error){
-    //       alert(`Не вірно заповнені пошта або пароль`)
-    //     }
-    //     console.log(error)
-    //   });
-    
-    // dispatch(authOperations.logIn({ email, password }));
+    try {
+      await dispatch(loginUser({email,password})).unwrap();
+      navigate({redirectPath}, { replace: true });
+    } catch (error) {
+      console.log(error);
+    }
     setEmail('');
     setPassword('');
   };
+
+  if (token) {
+    return <Navigate to={redirectPath} replace />;
+  }
 
   return (
     <div className={style.container}>
@@ -48,7 +47,7 @@ export default function LoginView() {
       <div className={style.container_form}>
         <form onSubmit={handleSubmit}  autoComplete="off">
         <label className={style.label}>
-          Пошта
+          Електронна адреса
           <input
             type="email"
             name="email"

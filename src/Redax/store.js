@@ -10,13 +10,14 @@ import { persistStore,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import contactsReducer  from './contacts';
-import authReducer from './auth/auth-slice';
+import authReducer from './auth/authSlice';
 import { contactsApi } from "./contactsSlice";
 
 const authPersistConfig = {
     key: 'user',
     storage,
     whitelist: ['auth', 'contacts'],
+    
 };
 
 const rootReducer = combineReducers({

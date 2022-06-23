@@ -3,8 +3,7 @@ import { useDispatch } from 'react-redux';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useNavigate } from 'react-router-dom';
-import { registerUser } from '../../Redax/auth/auth-operetions';
-import { setUser } from '../../Redax/auth/auth-slice';
+import { registerUser } from '../../Redax/auth/authSlice';
 
 import style from '../RegisterPage/RegisterPage.module.css';
 
@@ -31,14 +30,16 @@ export default function RegisterView() {
     const { name, email, password } = data;
     
     try {
-      const newUser = await registerUser({ name, email, password });
-      dispatch(setUser(newUser));
-      navigate("/", { replace: true });
+      await dispatch(registerUser({ name, email, password })).unwrap();
+      navigate("/");
       
     } catch (error) {
+      console.log(error.message)
       console.warn(error);
     }
   };
+
+  
   
   return (
     <div className={style.container}>

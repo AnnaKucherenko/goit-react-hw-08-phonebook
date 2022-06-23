@@ -1,23 +1,42 @@
 import axios from 'axios';
-// import { createAsyncThunk } from '@reduxjs/toolkit';
 
 const baseURL = 'https://connections-api.herokuapp.com/users';
 
+const getUserToken = () => {
+    const persistedData = localStorage.getItem('persist:user');
+    if (!persistedData) return;
+  
+    return JSON.parse(JSON.parse(persistedData).auth).token;
+};
+
 export const registerUser = (userData)=>{
-    axios.post(`${baseURL}/signup`, userData)
+    return axios.post(`${baseURL}/signup`, userData)
     .then((userData)=>{return userData})
     .catch((error)=>{alert ('Користувач з такою поштою вже зареєстрований')})
 
 };
 
-// const logIn = createAsyncThunk('auth/register', async credentials =>{
-//     try{
-//         const {data} = await axios.post('/users/login', credentials);
-//         return data;
-//     }catch(error){
-//         alert('Не вірно введені пошта або пароль');
-//     }
-// });
+export const loginUser = (body) =>{
+    return axios.post(`${baseURL}/login`, body)
+    .then((body)=>{return body})
+    .catch((error)=>{alert ('Електронна адреса або пароль вказані не вірно')})
+};
+
+export const getCurrentUser = () => {
+    axios.get(`${baseURL}/current`, {
+      headers: {
+        Authorization: getUserToken(),
+      },
+    });
+};
+  
+export const logoutUser = () => {
+    axios.post(`${baseURL}/logout`, null, {
+      headers: {
+        Authorization: getUserToken(),
+      },
+    });
+};
 
 
   
