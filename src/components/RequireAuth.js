@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import { Navigate, useLocation } from 'react-router';
 
 export const RequireAuth = ({ children }) => {
-  const status = useSelector((state) => state.auth.status);
+  const status = useSelector((state) => state.persistedReducer.auth.status);
   const location = useLocation();
 
   if (status === 'pending' || status === 'idle') {

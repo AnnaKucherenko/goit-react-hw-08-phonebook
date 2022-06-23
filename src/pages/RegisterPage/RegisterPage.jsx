@@ -38,8 +38,6 @@ export default function RegisterView() {
       console.warn(error);
     }
   };
-
-  
   
   return (
     <div className={style.container}>

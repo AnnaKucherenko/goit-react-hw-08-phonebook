@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { useSelector } from 'react-redux';
 import * as authApi from './auth-operetions';
 
 const initialState = {
@@ -23,19 +24,22 @@ export const registerUser = createAsyncThunk(
 );
 
 export const getCurrentUser = createAsyncThunk('auth/current', async () => {
-  await authApi.getCurrentUser();
+  const loginUser = useSelector((state) => state.persistedReducer.auth.isLoggedIn);
+  if(loginUser) {
+    await authApi.getCurrentUser();
+  }
+  return;
 });
 
 export const loginUser = createAsyncThunk('auth/login',
   async (userData) => {
-    console.log(userData)
     const { data } = await authApi.loginUser(userData);
     const { token, user } = data;
     return { token, user } ;
   }
 );
 
-export const logoutUser = createAsyncThunk('auth/logout', async (userData) => {
+export const logoutUser = createAsyncThunk('auth/logout', async () => {
   await authApi.logoutUser();
 });
 
@@ -53,6 +57,7 @@ const userSlice = createSlice({
    extraReducers: {
     [registerUser.fulfilled]: (state, { payload }) => {
       const { token, user } = payload;
+      
       state.error = null;
       state.loading = false;
       state.token = token;

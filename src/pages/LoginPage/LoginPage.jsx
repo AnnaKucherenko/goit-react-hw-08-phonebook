@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useLocation, useNavigate, Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginUser } from 'Redax/auth/auth-operetions';
+import { loginUser } from 'Redax/auth/authSlice';
 
 import style from '../LoginPage/LoginPage.module.css'
 
@@ -27,18 +27,20 @@ export default function LoginView() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
     try {
       await dispatch(loginUser({email,password})).unwrap();
       navigate({redirectPath}, { replace: true });
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
+      console.warn(error);
     }
-    setEmail('');
-    setPassword('');
+    // setEmail('');
+    // setPassword('');
   };
 
   if (token) {
-    return <Navigate to={redirectPath} replace />;
+    return <Navigate to="/contacts" replace />;
   }
 
   return (

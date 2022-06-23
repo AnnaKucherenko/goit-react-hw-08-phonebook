@@ -1,12 +1,18 @@
-// import { useDispatch, useSelector } from 'react-redux';
-// import { authSelectors, authOperations } from '../../redux/auth';
+import {logoutUser} from '../../Redax/auth/authSlice';
+import { useDispatch } from 'react-redux';
 import defaultAvatar from '../UserMenu/defaultAvatar.jpg';
 import style from '../UserMenu/UserMenu.module.css';
+import { useNavigate } from 'react-router-dom';
 
 export default function UserMenu() {
-  // const dispatch = useDispatch();
-//   const name = useSelector(authSelectors.getUsername);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const avatar = defaultAvatar;
+
+  const handleLogout = () => {
+    dispatch(logoutUser());
+    navigate('/');
+  };
 
   return (
     <div className={style.container}>
@@ -14,7 +20,7 @@ export default function UserMenu() {
       <span className={style.name}>Вітаю, </span>
       <button type="button"
       className={style.button} 
-    //   onClick={() => dispatch(authOperations.logOut())}
+      onClick={handleLogout}
       >
         Вийти
       </button>
