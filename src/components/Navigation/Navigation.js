@@ -1,10 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import defaultImgLogo from '../Navigation/defaultImgLogo.png'
 import style from '../Navigation/Navigation.module.css';
 
-
-const logo = defaultImgLogo;
 const Navigation = () => (
   
   <nav>
@@ -30,7 +27,9 @@ const Navigation = () => (
       <div className={style.nav_contacts}>
         Мої контакти
         <div className={style.logo}>
-          <img src={logo} alt="" width="19" className={style.image}></img>
+            <svg className={style.icon}  width="14" height="15">
+              <use href="./addressbook.svg"></use>
+            </svg>
         </div>
       </div>
            

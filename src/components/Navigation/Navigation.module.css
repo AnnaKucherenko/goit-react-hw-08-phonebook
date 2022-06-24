@@ -10,31 +10,40 @@
     color:  rgb(127, 202, 186);
 };
 
-.image{
-    display: block;
-    align-items: center;
-    justify-content: center;
-    
-}
-
 .logo{
-    display: block;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    
     width: 25px;
     height: 25px;
-    margin-left: 10px;
-    width: 30px;
-    /* padding-top: 5px;
-    padding-left: 5px; */
+    margin-left: 7px;
     border: 4px solid rgb(127, 202, 186);
     border-radius: 10px;
-    /* background-color: rgb(127, 202, 186);; */
+    
 }
  
+/* .logo::before {
+    display: block;
+    content: "";
+    width: 23px;
+    height: 23px;
+    background-size: 14px 15px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: white;
+    fill: rgb(127, 202, 186);
+    border: 4px solid rgb(127, 202, 186);;
+    border-radius: 8px;
+    margin-left: 10px;
+    background-image: url(./addressbook.svg);
+} */
+  
+.icon{
+    /* width: 23px;
+    height: 23px; */
+    fill:rgb(127, 202, 186);
+    
+} 
+
 .nav_contacts{
     display: flex;
     align-items: center;
 }
+

@@ -10,7 +10,7 @@ export const RequireAuth = ({ children }) => {
   }
 
   if (status === 'unauthorized') {
-    return <Navigate to="login" state={location.pathname} />;
+    return <Navigate to="/login" state={location.pathname} />;
   }
 
   return <>{children}</>;
