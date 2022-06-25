@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 // import * as contactsApi from './contacts-operetions';
 import { fetchGetContactsUser}from './contacts-operetions';
 import { fetchCreateNewContact}from './contacts-operetions';
@@ -11,7 +11,7 @@ const initialState = {
     loading: false,
     error: null,
     contacts: {
-        items:[],
+        items:['anna'],
         filter: '',
     }
 };

@@ -18,18 +18,18 @@ export const ContactsPage= async()=>{
     
     const contactsUser = await dispatch(getContactsUser()).unwrap();
     console.log(contactsUser);
+
+
+    // не оновлює стейт контактів
+
     // try {
-    //     // const contactsUser =
-         
-    // // console.log(contactsUser);
-        
+    //     dispatch(getContactsUser()).unwrap();
+               
     //   } catch (error) {
     //     console.log(error.message);
     //     console.warn(error);
     // }
 
-    
-    console.log(contactsUser);
     const toggleModal=()=>{
         setShowModal(!showModal);
     };
