@@ -1,15 +1,29 @@
 // import { isDisabled } from '@testing-library/user-event/dist/utils';
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import {getContactsUser} from '../../Redax/contacts/contactsSlice'
 import styles from './ContactList.module.css';
 
-function ContactList({ contacts, onDelete}) {
+async function ContactList() {
+    const dispatch = useDispatch();
     const filter = useSelector((state) => state.persistedReducer.contacts.contacts.filter);
-   
-    const normalizedFilter = filter.toLowerCase();
-    const visibleContact = contacts.filter(contact =>
-        contact.name.toLowerCase().includes(normalizedFilter)
-    );
+    const contacts = useSelector((state) => state.persistedReducer.contacts.contacts.items);
+    console.log(contacts, 'rjvgjytn cgbcjr')
+
+    try {
+        await dispatch(getContactsUser()).unwrap();
+    // console.log(res, 'в трай гет запрос')
+        
+    } catch (error) {
+        console.log(error.message);
+        console.warn(error);
+    }
+    
+    if(contacts.length>0){
+        const normalizedFilter = filter.toLowerCase();
+        const visibleContact = contacts.filter(contact =>
+            contact.name.toLowerCase().includes(normalizedFilter)
+        );
 
         return (
             <ul>
@@ -18,7 +32,7 @@ function ContactList({ contacts, onDelete}) {
                         {contact.name}:  {contact.phone}
                         <button
                             type="button"
-                            onClick={() => onDelete(contact.id)}
+                            // onClick={() => onDelete(contact.id)}
                             className={styles.buttonDelete}
                             
                             >
@@ -27,7 +41,9 @@ function ContactList({ contacts, onDelete}) {
                     </li>
                 ))}
             </ul>
-        );
+        ); 
+    } else{return;}
+    
     
 }
 

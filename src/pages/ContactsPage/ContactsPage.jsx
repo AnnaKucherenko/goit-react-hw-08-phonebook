@@ -7,25 +7,20 @@ import Filter from '../../components/filter/Filter';
 // import { useDeleteContactMutation, useFetchContactsQuery } from "Redax/contacts/contactsSlice";
 import { Loader } from "components/Loader/Loader";
 import { deleteContact, getContactsUser } from '../../Redax/contacts/contactsSlice';
+import {  useSelector } from 'react-redux';
 import style from '../ContactsPage/ContactsPage.module.css'
-import { useDispatch, useSelector } from 'react-redux';
 
-export const ContactsPage= async()=>{
-    const dispatch = useDispatch();
+export default async function ContactsPage(){
     const [showModal, setShowModal] = useState(false);
     const isLoader = useSelector((state) => state.persistedReducer.contacts.loading); 
-
+    // const contactsUser=useSelector((state) => state.persistedReducer.contacts.contacts.items); 
+    // console.log(contactsUser);
     
-    const contactsUser = await dispatch(getContactsUser()).unwrap();
-    console.log(contactsUser);
-
-
-    // не оновлює стейт контактів
-
     // try {
-    //     dispatch(getContactsUser()).unwrap();
-               
-    //   } catch (error) {
+    //     await dispatch(getContactsUser()).unwrap();
+    // // console.log(res, 'в трай гет запрос')
+        
+    // } catch (error) {
     //     console.log(error.message);
     //     console.warn(error);
     // }
@@ -42,7 +37,7 @@ export const ContactsPage= async()=>{
         <h2 className={style.title}>Контакти</h2>
         <Filter />
         {isLoader&&<Loader/>}
-        {contactsUser.length>0&&<ContactList contacts={contactsUser} onDelete={deleteContact}/>}
+        <ContactList  />
     </div>
     )
 }

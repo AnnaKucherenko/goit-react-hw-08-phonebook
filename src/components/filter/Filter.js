@@ -2,7 +2,7 @@ import React from 'react';
 import { 
     useSelector, 
     useDispatch } from 'react-redux';
-import {setFilterContacts} from '../../Redax/contacts/contacts';
+import {setFilterContacts} from '../../Redax/contacts/contactsSlice';
 import styles from './Filter.module.css';
 
 function Filter() {

@@ -11,12 +11,13 @@ const initialState = {
     loading: false,
     error: null,
     contacts: {
-        items:['anna'],
+        items:["anna"],
         filter: '',
     }
 };
 
-export const getContactsUser = createAsyncThunk('contacts/contacts', async () => {
+export const getContactsUser = createAsyncThunk('contacts/contacts', 
+  async () => {
     const response = await fetchGetContactsUser();
     const contactsUser = response.data;
     console.log(contactsUser);
@@ -39,7 +40,7 @@ export const deleteContact = createAsyncThunk('contacts/delete', async (contactI
 export const updatedContact = createAsyncThunk('contacts/update', async (contactId, contactData) => {
   const  data  = await fetchUpdateContact({contactId,contactData});
   console.log(data, 'update')
-  // const { name, number } = data;
+  
   return data ;
 });
 
@@ -53,9 +54,10 @@ const contactsSlice = createSlice({
   },
   extraReducers: {
     [getContactsUser.fulfilled]: (state, { payload }) => {
+      
       state.error = null;
       state.loading = false;
-      state.contacts.items = payload; 
+      state.contacts.items = payload;
       // state.status = 'success';
     },
     [getContactsUser.rejected]: (state, { error }) => {

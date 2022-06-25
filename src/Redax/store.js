@@ -37,10 +37,8 @@ export const store = configureStore({
                       serializableCheck: {
                         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
                       },
-                      
                 }),
-                // contactsApi.middleware,
-                
+                // contactsApi.middleware,        
     ],
     
 });
