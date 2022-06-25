@@ -3,9 +3,9 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import styles from './ContactList.module.css';
 
-function ContactList({contacts, onDelete}) {
-    const filter = useSelector((state) => state.contacts.contacts.filter);
-    
+function ContactList({ contacts, onDelete}) {
+    const filter = useSelector((state) => state.persistedReducer.contacts.contacts.filter);
+   
     const normalizedFilter = filter.toLowerCase();
     const visibleContact = contacts.filter(contact =>
         contact.name.toLowerCase().includes(normalizedFilter)

@@ -9,9 +9,9 @@ import { persistStore,
     REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import contactsReducer  from './contacts';
 import authReducer from './auth/authSlice';
-import { contactsApi } from "./contactsSlice";
+import contactsReducer from "./contacts/contactsSlice";
+// import { contactsApi } from "./contacts/contactsSlice";
 
 const authPersistConfig = {
     key: 'user',
@@ -30,7 +30,7 @@ const persistedReducer = persistReducer(authPersistConfig,rootReducer);
 export const store = configureStore({
     reducer: {
         persistedReducer,
-        [contactsApi.reducerPath]: contactsApi.reducer,
+        // [contactsApi.reducerPath]: contactsApi.reducer,
     },
     middleware: getDefaultMiddleware =>[
                 ...getDefaultMiddleware({
@@ -39,7 +39,7 @@ export const store = configureStore({
                       },
                       
                 }),
-                contactsApi.middleware,
+                // contactsApi.middleware,
                 
     ],
     

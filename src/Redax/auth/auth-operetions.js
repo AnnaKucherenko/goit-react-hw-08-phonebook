@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const baseURL = 'https://connections-api.herokuapp.com/users';
 
-const getUserToken = () => {
+export const getUserToken = () => {
     const persistedData = localStorage.getItem('persist:user');
     if (!persistedData) return;
   

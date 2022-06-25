@@ -7,7 +7,7 @@ import style from './HeaderBar.module.css';
 export default function HeaderBar() {
   const isLoggedIn = useSelector((state) => state.persistedReducer.auth.isLoggedIn);
   return (
-    <header className={style.header_bar}>
+    <header className={style.header}>
       <Navigation />
       {/* <AuthNav/>
       <UserMenu/> */}
