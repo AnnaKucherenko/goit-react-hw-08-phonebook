@@ -6,7 +6,7 @@ import ContactList from "../../components/contactList/ContactList";
 import Filter from '../../components/filter/Filter';
 // import { useDeleteContactMutation, useFetchContactsQuery } from "Redax/contacts/contactsSlice";
 import { Loader } from "components/Loader/Loader";
-import { deleteContact, getContactsUser } from '../../Redax/contacts/contactsSlice';
+// import { deleteContact, getContactsUser } from '../../Redax/contacts/contactsSlice';
 import {  useSelector } from 'react-redux';
 import style from '../ContactsPage/ContactsPage.module.css'
 
@@ -32,7 +32,7 @@ export default async function ContactsPage(){
     return(
     <div className={style.container}>
         {showModal&&<Modal onClose={toggleModal}/>}
-        <button className={style.button} onClick={()=>toggleModal()} >Додати контакт</button>
+        <button className={style.button} onClick={()=>toggleModal()}>Додати контакт</button>
                 
         <h2 className={style.title}>Контакти</h2>
         <Filter />
