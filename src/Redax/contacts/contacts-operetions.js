@@ -9,12 +9,7 @@ export const fetchGetContactsUser = () =>{
             Authorization: getUserToken(),
         },
     })
-    // .then((response)=>{
-    //   const contactsUser = response.data;
-    //   console.log(contactsUser);
-    //   return contactsUser;
-    // })
-    // .catch((error)=>console.log(error.message))
+    
 };
 
 export const fetchCreateNewContact = (body) =>{
@@ -23,7 +18,7 @@ export const fetchCreateNewContact = (body) =>{
             Authorization: getUserToken(),
         },
     }, 
-    body);
+    body)
     // .then((body)=>{return body})
     // .catch((error)=>{alert ('Електронна адреса або пароль вказані не вірно')})
 };

@@ -1,4 +1,4 @@
-import React from 'react';
+import React  from 'react';
 import { useState} from 'react';
 import Modal from 'components/Modal/Modal';
 import ContactList from "../../components/contactList/ContactList";
@@ -10,7 +10,8 @@ import { Loader } from "components/Loader/Loader";
 import {  useSelector } from 'react-redux';
 import style from '../ContactsPage/ContactsPage.module.css'
 
-export default async function ContactsPage(){
+export default function ContactsPage(){
+    // const dispatch = useDispatch();
     const [showModal, setShowModal] = useState(false);
     const isLoader = useSelector((state) => state.persistedReducer.contacts.loading); 
     // const contactsUser=useSelector((state) => state.persistedReducer.contacts.contacts.items); 
@@ -24,6 +25,10 @@ export default async function ContactsPage(){
     //     console.log(error.message);
     //     console.warn(error);
     // }
+
+    // useEffect(() => {
+    //     dispatch(getContactsUser());
+    //   }, [dispatch]);
 
     const toggleModal=()=>{
         setShowModal(!showModal);

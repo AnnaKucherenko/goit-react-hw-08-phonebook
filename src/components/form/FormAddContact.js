@@ -1,11 +1,13 @@
 import React from 'react';
 import { useState } from "react";
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 // import { useAddContactMutation } from 'Redax/contacts/contactsSlice';
 import {createNewContact} from '../../Redax/contacts/contactsSlice';
 import styles from './FormAddContact.module.css';
 
 export default function FormAddContact ({contacts, onClose}){
+    const dispatch= useDispatch();
+    
     const [name, setName] = useState('');
     const [number, setNumber] = useState('');
     // const [addContact, {isLoading}] = useAddContactMutation();
@@ -21,8 +23,9 @@ export default function FormAddContact ({contacts, onClose}){
         }
     };
 
-    const handleSubmit = (e)=>{
+    const handleSubmit = async(e)=>{
         e.preventDefault();
+        
         const contactName = e.currentTarget.elements.name.value;
         const contactPhone = e.currentTarget.elements.number.value;
         const contactData = {contactName,contactPhone};
@@ -30,10 +33,18 @@ export default function FormAddContact ({contacts, onClose}){
         // if (isFindContact) {
         //     alert(`${name} is already in contacts`);
         // } else {
-            createNewContact(contactData);
-            onClose();
+            
+            // createNewContact(contactData);
+            
         // }
-        
+        try{
+            await dispatch(createNewContact(contactData)).unwrap();
+                
+        }catch(error){
+            console.log(error.message);
+                
+        }
+        onClose();
         reset();
     }
 

@@ -33,7 +33,7 @@ export default function LoginView() {
       navigate({redirectPath}, { replace: true });
     } catch (error) {
       console.log(error.message);
-      console.warn(error);
+      
     }
     // setEmail('');
     // setPassword('');
