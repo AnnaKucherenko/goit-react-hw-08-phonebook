@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import {useDispatch,useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import { getCurrentUser } from './Redax/auth/authSlice';
 import { RequireAuth } from './components/RequireAuth';
 import HomePage  from './pages/HomePage/HomePage';
@@ -12,13 +12,13 @@ import HeaderBar from './components/HeaderBar/HeaderBar';
   
 function App() {
   const dispatch = useDispatch();
-  const isLoading = useSelector((state) => state.persistedReducer.contacts.loading)
+  
   useEffect(() => {
     dispatch(getCurrentUser());
   }, [dispatch]);
 
   return (
-    !isLoading&&(
+    
     <div>
         <HeaderBar/>
         <Routes>
@@ -34,7 +34,7 @@ function App() {
             } 
           />
         </Routes>
-      </div>)
+      </div>
       
       
   ); 
