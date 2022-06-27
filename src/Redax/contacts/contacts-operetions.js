@@ -19,8 +19,7 @@ export const fetchCreateNewContact = (body) =>{
         },
     }, 
     body)
-    // .then((body)=>{return body})
-    // .catch((error)=>{alert ('Електронна адреса або пароль вказані не вірно')})
+    
 };
 
 export const fetchDeleteContact = (contactId) => {

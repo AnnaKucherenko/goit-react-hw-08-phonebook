@@ -79,7 +79,7 @@ const contactsSlice = createSlice({
       // const { name, number } = payload;
       state.error = null;
       state.loading = false;
-      state.contacts.items = [{...state, ...payload}];
+      state.contacts.items = [{...state, payload}];
           
       // state.status = 'success';
     },
