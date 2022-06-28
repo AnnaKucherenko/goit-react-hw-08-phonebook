@@ -1,7 +1,7 @@
 // import { isDisabled } from '@testing-library/user-event/dist/utils';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {getContactsUser} from '../../Redax/contacts/contactsSlice'
+import {getContactsUser, deleteContact} from '../../Redax/contacts/contactsSlice'
 import styles from './ContactList.module.css';
 
 function ContactList() {
@@ -26,7 +26,7 @@ function ContactList() {
                     {contact.name}:  {contact.number}
                     <button
                         type="button"
-                        // onClick={() => onDelete(contact.id)}
+                        onClick={()=>dispatch(deleteContact(contact.id))}
                         className={styles.buttonDelete}
                             
                         >

@@ -28,10 +28,8 @@ export const getContactsUser = createAsyncThunk('contacts/contacts',
 export const createNewContact = createAsyncThunk('contacts/add',
   async (body) => {
     const  data  = await fetchCreateNewContact(body);
-    console.log(data.data, 'add contact');
     const name = data.data.name;
     const number = data.data.number;
-    // console.log(contact, ' contact');
     const  contactData = { name, number };
     return contactData ;
        
@@ -43,6 +41,7 @@ export const createNewContact = createAsyncThunk('contacts/add',
 export const deleteContact = createAsyncThunk('contacts/delete', async (contactId) => {
   await fetchDeleteContact(contactId);
   return contactId;
+  
 });
 
 export const updatedContact = createAsyncThunk('contacts/update', async (contactId, contactData) => {

@@ -24,7 +24,7 @@ export const fetchCreateNewContact = (body) =>{
 };
 
 export const fetchDeleteContact = (contactId) => {
-    axios.delete(`${baseURL}/{${contactId}}`, {
+    return axios.delete(`${baseURL}/${contactId}`, {
       headers: {
         Authorization: getUserToken(),
       },
