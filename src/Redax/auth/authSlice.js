@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import * as authApi from './auth-operetions';
 
 const initialState = {
@@ -24,11 +24,11 @@ export const registerUser = createAsyncThunk(
 );
 
 export const getCurrentUser = createAsyncThunk('auth/current', async () => {
-  const loginUser = useSelector((state) => state.persistedReducer.auth.isLoggedIn);
-  if(loginUser) {
-    await authApi.getCurrentUser();
-  }
-  return;
+  // const loginUser = useSelector((state) => state.persistedReducer.auth.isLoggedIn);
+  // if(loginUser) {
+  //   return await authApi.getCurrentUser();
+  // }
+  return await authApi.getCurrentUser();
 });
 
 export const loginUser = createAsyncThunk('auth/login',
@@ -82,7 +82,7 @@ const userSlice = createSlice({
       state.token = token;
       state.user = user;
       state.isLoggedIn = true;
-      state.status = 'success';
+      state.status = 'authorized';
     },
     [loginUser.rejected]: (state, { error }) => {
       state.loading = false;
@@ -95,7 +95,7 @@ const userSlice = createSlice({
     },
 
     [getCurrentUser.fulfilled]: (state) => {
-      state.status = 'success';
+      state.status = 'authorized';
       state.loading = false;
       state.isLoggedIn = true;
     },

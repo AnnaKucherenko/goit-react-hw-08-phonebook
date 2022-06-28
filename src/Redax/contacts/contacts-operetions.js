@@ -13,12 +13,12 @@ export const fetchGetContactsUser = () =>{
 };
 
 export const fetchCreateNewContact = (body) =>{
-    return axios.post(`${baseURL}`, {
+    return axios.post(`${baseURL}`, body,{
         headers: {
             Authorization: getUserToken(),
         },
     },
-    body,
+    
     )
     
 };

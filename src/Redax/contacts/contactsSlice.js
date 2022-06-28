@@ -26,11 +26,14 @@ export const getContactsUser = createAsyncThunk('contacts/contacts',
 );
 
 export const createNewContact = createAsyncThunk('contacts/add',
-  async (contactData) => {
-    const  data  = await fetchCreateNewContact(contactData);
-    console.log(data, 'add contact');
-    // const { name, number } = data;
-    return data ;
+  async (body) => {
+    const  data  = await fetchCreateNewContact(body);
+    console.log(data.data, 'add contact');
+    const name = data.data.name;
+    const number = data.data.number;
+    // console.log(contact, ' contact');
+    const  contactData = { name, number };
+    return contactData ;
        
   }
 );
@@ -78,7 +81,7 @@ const contactsSlice = createSlice({
       // const { name, number } = payload;
       state.error = null;
       state.loading = false;
-      state.contacts.items = [{...state, payload}];
+      state.contacts.items = [...state.contacts.items, payload];
           
       // state.status = 'success';
     },

@@ -7,6 +7,7 @@ import style from '../LoginPage/LoginPage.module.css'
 
 export default function LoginView() {
   const token = useSelector((state) => state.persistedReducer.auth.token);
+  const status = useSelector((state) => state.persistedReducer.auth.status);
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -39,7 +40,7 @@ export default function LoginView() {
     // setPassword('');
   };
 
-  if (token) {
+  if (token&&status==="authorized") {
     return <Navigate to="/contacts" replace />;
   }
 
