@@ -17,8 +17,9 @@ export const fetchCreateNewContact = (body) =>{
         headers: {
             Authorization: getUserToken(),
         },
-    }, 
-    body)
+    },
+    body,
+    )
     
 };
 

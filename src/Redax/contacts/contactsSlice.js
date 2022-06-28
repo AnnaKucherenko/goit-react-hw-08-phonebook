@@ -59,7 +59,6 @@ const contactsSlice = createSlice({
   },
   extraReducers: {
     [getContactsUser.fulfilled]: (state, { payload }) => {
-      
       state.error = null;
       state.loading = false;
       state.contacts.items = payload;

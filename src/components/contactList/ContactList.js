@@ -14,6 +14,17 @@ function ContactList() {
         dispatch(getContactsUser());
     }, [dispatch]);
 
+    // try {
+    //    await dispatch(getContactsUser()).unwrap();
+    // // console.log(res, 'в трай гет запрос')
+        
+    // } catch (error) {
+    //     console.log(error.message);
+    //     console.warn(error);
+    // }
+
+    // getContactsUser();
+
     const normalizedFilter = filter.toLowerCase();
     const visibleContact = contacts.filter(contact =>
         contact.name.toLowerCase().includes(normalizedFilter)
