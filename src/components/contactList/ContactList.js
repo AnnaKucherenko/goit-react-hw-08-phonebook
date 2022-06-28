@@ -1,15 +1,16 @@
 // import { isDisabled } from '@testing-library/user-event/dist/utils';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {getContactsUser, deleteContact} from '../../Redax/contacts/contactsSlice'
+import {getContactsUser, deleteContact} from '../../Redax/contacts/contactsSlice';
+import Modal from 'components/Modal/Modal';
 import styles from './ContactList.module.css';
 
 function ContactList() {
     const dispatch = useDispatch();
+    const [showModal, setShowModal] = useState(false);
     const filter = useSelector((state) => state.persistedReducer.contacts.contacts.filter);
     const contacts = useSelector((state) => state.persistedReducer.contacts.contacts.items);
-    // console.log(contacts, 'rjvgjytn cgbcjr');
-
+    
     useEffect(() => {
         dispatch(getContactsUser());
     }, [dispatch]);
@@ -19,10 +20,17 @@ function ContactList() {
         contact.name.toLowerCase().includes(normalizedFilter)
     );
 
+    const toggleModal=()=>{
+        setShowModal(!showModal);
+    };
+
     return (
+        <>
+        
         <ul>
             {visibleContact.map(contact => (
                 <li key={contact.id}>
+                    {showModal&&<Modal id={contact.id} onClose={toggleModal}/>}
                     {contact.name}:  {contact.number}
                     <button
                         type="button"
@@ -32,9 +40,18 @@ function ContactList() {
                         >
                         Delete
                     </button>
+                    <button
+                        type="button"
+                        onClick={()=>toggleModal()}
+                        className={styles.buttonDelete}
+                        >
+                        Update
+                    </button>
                 </li>
             ))}
         </ul>
+        </>
+        
     ); 
    
 }

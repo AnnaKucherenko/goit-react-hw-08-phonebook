@@ -44,11 +44,12 @@ export const deleteContact = createAsyncThunk('contacts/delete', async (contactI
   
 });
 
-export const updatedContact = createAsyncThunk('contacts/update', async (contactId, contactData) => {
-  const  data  = await fetchUpdateContact({contactId,contactData});
+export const updateContact = createAsyncThunk('contacts/update', async (dataContact) => {
+  console.log(dataContact)
+  const  data  = await fetchUpdateContact(dataContact);
   console.log(data, 'update')
-  
-  return data ;
+  const updatedContact = data.data;
+  return updatedContact;
 });
 
 const contactsSlice = createSlice({
@@ -64,49 +65,52 @@ const contactsSlice = createSlice({
       state.error = null;
       state.loading = false;
       state.contacts.items = payload;
-      // state.status = 'success';
+      
     },
     [getContactsUser.rejected]: (state, { error }) => {
       state.loading = false;
       state.error = error.message;
-      // state.status = 'error';
+      
     },
     [getContactsUser.pending]: (state) => {
       state.loading = true;
-      // state.status = 'pending';
+      
     },
 
     [createNewContact.fulfilled]: (state, { payload }) => {
-      // const { name, number } = payload;
       state.error = null;
       state.loading = false;
       state.contacts.items = [...state.contacts.items, payload];
-          
-      // state.status = 'success';
+      
     },
     [createNewContact.rejected]: (state, { error }) => {
       state.loading = false;
       state.error = error.message;
-      // state.status = 'unauthorized';
+      
     },
     [createNewContact.pending]: (state) => {
       state.loading = true;
-      // state.status = 'pending';
+      
     },
 
-    // [updateContact.fulfilled]: (state, { payload }) => {
-    //   // state.status = 'success';
-    //   state.loading = false;
+    [updateContact.fulfilled]: (state, { payload }) => {
+      const {id,name,number} = payload;
+      const updatedContact = {name, number};
       
-    // },
-    // [updateContact.rejected]: (state) => {
-    //   // state.status = 'unauthorized';
-    //   state.loading = false;
-    // },
-    // [updateContact.pending]: (state) => {
-    //   // state.status = 'pending';
-    //   state.loading = true;
-    // },
+      const currentArrContacts = state.contacts.items;
+      const indexUpdateContact = currentArrContacts.findIndex(contact => contact.id === id);
+      currentArrContacts.splice(indexUpdateContact,1,updatedContact);
+      state.contacts.items = currentArrContacts;
+      // const contactArr = currentArrContacts.filter(contact => contact.id !== payload.id);
+      // state.contacts.items = [...contactArr, updatedContact];
+      state.loading = false;
+    },
+    [updateContact.rejected]: (state) => {
+      state.loading = false;
+    },
+    [updateContact.pending]: (state) => {
+      state.loading = true;
+    },
 
     [deleteContact.fulfilled]: (state, { payload }) => {
       const currentArrContacts = state.contacts.items;

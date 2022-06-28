@@ -31,11 +31,14 @@ export const fetchDeleteContact = (contactId) => {
     });
 };
   
-export const fetchUpdateContact = (contactId, body) => {
-    axios.patch(`${baseURL}/{${contactId}}`, {
+export const fetchUpdateContact = (contactData) => {
+    console.log(contactData.id)
+    console.log(contactData.contactData)
+    const contactId = contactData.id;
+    const body = contactData.contactData
+    return axios.patch(`${baseURL}/${contactId}`, body, {
       headers: {
         Authorization: getUserToken(),
       },
-    }, 
-    body);
+    });
 };
