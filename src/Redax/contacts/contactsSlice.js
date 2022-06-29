@@ -95,11 +95,11 @@ const contactsSlice = createSlice({
 
     [updateContact.fulfilled]: (state, { payload }) => {
       const {id,name,number} = payload;
-      const updatedContact = {name, number};
-      
+      // const updatedContact = {name, number};
       const currentArrContacts = state.contacts.items;
       const indexUpdateContact = currentArrContacts.findIndex(contact => contact.id === id);
-      currentArrContacts.splice(indexUpdateContact,1,updatedContact);
+      console.log(indexUpdateContact)
+      currentArrContacts.splice(indexUpdateContact,1,payload);
       state.contacts.items = currentArrContacts;
       // const contactArr = currentArrContacts.filter(contact => contact.id !== payload.id);
       // state.contacts.items = [...contactArr, updatedContact];

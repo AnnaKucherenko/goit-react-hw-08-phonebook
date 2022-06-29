@@ -8,6 +8,7 @@ import styles from './ContactList.module.css';
 function ContactList() {
     const dispatch = useDispatch();
     const [showModal, setShowModal] = useState(false);
+    const [contactId, setContactId] = useState('');
     const filter = useSelector((state) => state.persistedReducer.contacts.contacts.filter);
     const contacts = useSelector((state) => state.persistedReducer.contacts.contacts.items);
     
@@ -20,8 +21,9 @@ function ContactList() {
         contact.name.toLowerCase().includes(normalizedFilter)
     );
 
-    const toggleModal=()=>{
+    const toggleModal=(id)=>{
         setShowModal(!showModal);
+        setContactId(id);
     };
 
     return (
@@ -29,8 +31,9 @@ function ContactList() {
         
         <ul>
             {visibleContact.map(contact => (
+                            
                 <li key={contact.id}>
-                    {showModal&&<Modal id={contact.id} onClose={toggleModal}/>}
+                    {showModal&&<Modal id={contactId} onClose={toggleModal}/>}
                     {contact.name}:  {contact.number}
                     <button
                         type="button"
@@ -42,12 +45,14 @@ function ContactList() {
                     </button>
                     <button
                         type="button"
-                        onClick={()=>toggleModal()}
+                        onClick={()=>toggleModal(contact.id)}
                         className={styles.buttonDelete}
                         >
                         Update
                     </button>
                 </li>
+                
+                
             ))}
         </ul>
         </>
