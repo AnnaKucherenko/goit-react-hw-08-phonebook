@@ -1,6 +1,6 @@
 import React  from 'react';
 import { useState} from 'react';
-import Modal from 'components/Modal/Modal';
+import Modal from 'components/Modal/ModalAddContact';
 import ContactList from "../../components/contactList/ContactList";
 // import FormAddContact from '../../components/form/FormAddContact';
 import Filter from '../../components/filter/Filter';
@@ -9,6 +9,7 @@ import { Loader } from "components/Loader/Loader";
 // import { deleteContact, getContactsUser } from '../../Redax/contacts/contactsSlice';
 import {  useSelector } from 'react-redux';
 import style from '../ContactsPage/ContactsPage.module.css'
+import ModalAddContact from 'components/Modal/ModalAddContact';
 
 export default function ContactsPage(){
     // const dispatch = useDispatch();
@@ -36,7 +37,7 @@ export default function ContactsPage(){
 
     return(
     <div className={style.container}>
-        {showModal&&<Modal onClose={toggleModal}/>}
+        {showModal&&<ModalAddContact onClose={toggleModal}/>}
         <button className={style.button} onClick={()=>toggleModal()}>Додати контакт</button>
                 
         <h2 className={style.title}>Контакти</h2>

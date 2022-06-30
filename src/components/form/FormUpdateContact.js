@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {updateContact} from '../../Redax/contacts/contactsSlice';
 import styles from './FormAddContact.module.css';
 
-export default function FormUpdateContact ({id, onClose}){
+export default function FormUpdateContact ({id, updateName, updateNumber, onClose}){
     const dispatch= useDispatch();
     const [name, setName] = useState('');
     const [number, setNumber] = useState('');
@@ -34,7 +34,7 @@ export default function FormUpdateContact ({id, onClose}){
         // const dataContact = {name,number};
         
         try{
-            await dispatch(updateContact({id,contactData})).unwrap();
+            await dispatch(updateContact({id, contactData})).unwrap();
                 
         }catch(error){
             console.log(error.message);
@@ -65,6 +65,7 @@ export default function FormUpdateContact ({id, onClose}){
                             value={name}
                             onChange={handleChange}
                             className={styles.inputModal}
+                            placeholder={updateName}
                         />
                     </div>
                     <div className={styles.inputForm}>
@@ -80,6 +81,7 @@ export default function FormUpdateContact ({id, onClose}){
                             value={number}
                             onChange={handleChange}
                             className={styles.inputModal}
+                            placeholder={updateNumber}
                         />
                     </div>
                 <button type='submit' className={styles.buttontForm} disabled={isLoading}>Update contact</button>

@@ -1,13 +1,12 @@
 import { useEffect } from 'react'; 
 import {createPortal}from 'react-dom';
 import PropTypes from "prop-types";
-import FormAddContact from '../../components/form/FormAddContact';
-import FormUpdateContact from '../../components/form/FormUpdateContact';
+import FormUpdateContact from '../form/FormUpdateContact.js'
 import styles from './Modal.module.css';
 
 const modalRoot = document.querySelector('#modal-root');
 
-export default function Modal ({id, onClose}) {
+export default function ModalUpdateContact ({id, name, number, onClose}) {
     useEffect(()=>{
         const handleKeyDown = e => {
                 if(e.code === 'Escape'){
@@ -17,7 +16,6 @@ export default function Modal ({id, onClose}) {
 
         window.addEventListener('keydown', handleKeyDown);
         return ()=>{
-            // console.log('функція розмонтування');
             window.removeEventListener('keydown', handleKeyDown);
         }
     },[onClose]);
@@ -33,8 +31,11 @@ export default function Modal ({id, onClose}) {
     return createPortal(
             <div className={styles.overlay} onClick ={handleBackdropClick}>
                 <div className={styles.modal}>
-                    <FormAddContact onClose={onClose}/>
-                    <FormUpdateContact id={id} onClose={onClose}/>
+                    <FormUpdateContact 
+                    id={id}
+                    updateName={name}
+                    updateNumber={number}
+                    onClose={onClose}/>
                 </div>
             </div>, 
             modalRoot,
@@ -42,6 +43,6 @@ export default function Modal ({id, onClose}) {
     
 }
 
-Modal.propTypes = {
+ModalUpdateContact.propTypes = {
     onClose: PropTypes.func.isRequired,
 }
