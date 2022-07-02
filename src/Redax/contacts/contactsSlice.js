@@ -50,7 +50,9 @@ const contactsSlice = createSlice({
   initialState,
   reducers: { 
     setFilterContacts(state, { payload }) {
-        state.persistedReducer.contacts.filter = payload;
+      console.log(state)
+      console.log(payload)
+      state.contacts.filter = payload;
     },
   },
   extraReducers: {
