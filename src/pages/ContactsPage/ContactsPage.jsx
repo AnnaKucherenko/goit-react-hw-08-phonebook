@@ -2,7 +2,7 @@ import React  from 'react';
 import { useState} from 'react';
 import ContactList from "../../components/ContactsList/ContactList";
 // import FormAddContact from '../../components/form/FormAddContact';
-import {Filter} from '../../components/Filter/Filter';
+import {Filter} from '../../components/FilterContacts/Filter';
 // import { useDeleteContactMutation, useFetchContactsQuery } from "Redax/contacts/contactsSlice";
 import { Loader } from "components/Loader/Loader";
 import ModalAddContact from 'components/Modal/ModalAddContact';
