@@ -42,7 +42,7 @@ export default function ContactsPage(){
         <h2 className={style.title}>Контакти</h2>
         <Filter />
         {isLoader&&<Loader/>}
-        <ContactList  />
+        <ContactList />
     </div>
     )
 }
