@@ -1,14 +1,15 @@
 import React  from 'react';
 import { useState} from 'react';
-import ContactList from "../../components/ContactList/ContactList";
+import ContactList from "../../components/ContactsList/ContactList";
 // import FormAddContact from '../../components/form/FormAddContact';
 import Filter from '../../components/Filter/Filter';
 // import { useDeleteContactMutation, useFetchContactsQuery } from "Redax/contacts/contactsSlice";
 import { Loader } from "components/Loader/Loader";
+import ModalAddContact from 'components/Modal/ModalAddContact';
 // import { deleteContact, getContactsUser } from '../../Redax/contacts/contactsSlice';
 import {  useSelector } from 'react-redux';
 import style from '../ContactsPage/ContactsPage.module.css'
-import ModalAddContact from 'components/Modal/ModalAddContact';
+
 
 export default function ContactsPage(){
     // const dispatch = useDispatch();
