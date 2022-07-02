@@ -2,8 +2,9 @@
 import React, { useEffect, useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {getContactsUser, deleteContact} from '../../Redax/contacts/contactsSlice';
+import ModalUpdateContact from '../Modal/ModalUpdateContact';
 import styles from './ContactList.module.css';
-import ModalUpdateContact from 'components/Modal/ModalUpdataContact';
+
 
 function ContactList() {
     const dispatch = useDispatch();
