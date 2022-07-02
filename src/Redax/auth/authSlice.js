@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 // import { useSelector } from 'react-redux';
-import * as authApi from './auth-operetions';
+import * as authApi from './authOperetions';
 
 const initialState = {
     loading: false,

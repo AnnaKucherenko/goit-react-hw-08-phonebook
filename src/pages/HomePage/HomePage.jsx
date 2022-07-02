@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import style from '../HomePage/HomePage.module.css'
 
-const HomeView = () => (
+const HomePage = () => (
   <div className={style.container}>
     <h1 className={style.title}>
       Привіт!
@@ -14,4 +14,4 @@ const HomeView = () => (
   </div>
 );
 
-export default HomeView;
+export default HomePage;

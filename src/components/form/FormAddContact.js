@@ -3,15 +3,16 @@ import { useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 // import { useAddContactMutation } from 'Redax/contacts/contactsSlice';
 import {createNewContact} from '../../Redax/contacts/contactsSlice';
+import PropTypes from "prop-types";
 import styles from './FormAddContact.module.css';
 
-export default function FormAddContact ({contacts, onClose}){
+export default function FormAddContact ({onClose}){
     const dispatch= useDispatch();
-    
     const [name, setName] = useState('');
     const [number, setNumber] = useState('');
     // const [addContact, {isLoading}] = useAddContactMutation();
     const isLoading = useSelector((state) => state.persistedReducer.contacts.loading);
+    const contacts = useSelector((state) => state.persistedReducer.contacts.contacts.items);
     
     const handleChange = (event) => {
         const { name, value } = event.currentTarget;
@@ -29,22 +30,18 @@ export default function FormAddContact ({contacts, onClose}){
         const name = e.currentTarget.elements.name.value;
         const number = e.currentTarget.elements.number.value;
         const contactData = {name,number};
-        // const isFindContact = contacts.find(contact=>contact.name===name);
-        // if (isFindContact) {
-        //     alert(`${name} is already in contacts`);
-        // } else {
-            
-            // createNewContact(contactData);
-            
-        // }
-        try{
-            await dispatch(createNewContact(contactData)).unwrap();
-                
-        }catch(error){
-            console.log(error.message);
-                
+        const isFindContact = contacts.find(contact=>contact.name===name);
+        if (isFindContact) {
+            alert(`Контакт ${name} вже існує`);
+        } else {
+            try{
+                await dispatch(createNewContact(contactData)).unwrap();
+                    
+            }catch(error){
+                console.log(error.message);
+            }
+            onClose();
         }
-        onClose();
         reset();
     }
 
@@ -93,5 +90,10 @@ export default function FormAddContact ({contacts, onClose}){
             </form>
         );
     
+}
+
+FormAddContact.propTypes = {
+    onClose: PropTypes.func.isRequired,
+   
 }
 

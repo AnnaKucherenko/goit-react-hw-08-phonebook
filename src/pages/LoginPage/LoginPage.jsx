@@ -5,7 +5,7 @@ import { loginUser } from 'Redax/auth/authSlice';
 
 import style from '../LoginPage/LoginPage.module.css'
 
-export default function LoginView() {
+export default function LoginPage() {
   const token = useSelector((state) => state.persistedReducer.auth.token);
   const status = useSelector((state) => state.persistedReducer.auth.status);
   const dispatch = useDispatch();

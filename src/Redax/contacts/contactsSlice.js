@@ -1,10 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-// import { useSelector } from 'react-redux';
-// import * as contactsApi from './contacts-operetions';
-import { fetchGetContactsUser}from './contacts-operetions';
-import { fetchCreateNewContact}from './contacts-operetions';
-import { fetchDeleteContact}from './contacts-operetions';
-import { fetchUpdateContact}from './contacts-operetions';
+import { fetchGetContactsUser}from './contactsOperetions';
+import { fetchCreateNewContact}from './contactsOperetions';
+import { fetchDeleteContact}from './contactsOperetions';
+import { fetchUpdateContact}from './contactsOperetions';
 
 
 const initialState = {
@@ -20,7 +18,6 @@ export const getContactsUser = createAsyncThunk('contacts/contacts',
   async () => {
     const response = await fetchGetContactsUser();
     const contactsUser = response.data;
-    console.log(contactsUser);
     return contactsUser;
   }
 );
@@ -28,15 +25,11 @@ export const getContactsUser = createAsyncThunk('contacts/contacts',
 export const createNewContact = createAsyncThunk('contacts/add',
   async (body) => {
     const  data  = await fetchCreateNewContact(body);
-    const name = data.data.name;
-    const number = data.data.number;
-    const  contactData = { name, number };
-    return contactData ;
+    const  contactData = data.data ;
+    return contactData;
        
   }
 );
-
-
 
 export const deleteContact = createAsyncThunk('contacts/delete', async (contactId) => {
   await fetchDeleteContact(contactId);
@@ -64,7 +57,9 @@ const contactsSlice = createSlice({
     [getContactsUser.fulfilled]: (state, { payload }) => {
       state.error = null;
       state.loading = false;
-      state.contacts.items = payload;
+      const sortContacts = payload;
+      sortContacts.sort((a, b) => a.name > b.name ? 1 : -1);
+      state.contacts.items = sortContacts;
       
     },
     [getContactsUser.rejected]: (state, { error }) => {
@@ -80,7 +75,9 @@ const contactsSlice = createSlice({
     [createNewContact.fulfilled]: (state, { payload }) => {
       state.error = null;
       state.loading = false;
-      state.contacts.items = [...state.contacts.items, payload];
+      const sortContacts = [...state.contacts.items, payload];
+      sortContacts.sort((a, b) => a.name > b.name ? 1 : -1);
+      state.contacts.items = sortContacts;
       
     },
     [createNewContact.rejected]: (state, { error }) => {
@@ -94,15 +91,11 @@ const contactsSlice = createSlice({
     },
 
     [updateContact.fulfilled]: (state, { payload }) => {
-      const {id,name,number} = payload;
-      // const updatedContact = {name, number};
       const currentArrContacts = state.contacts.items;
-      const indexUpdateContact = currentArrContacts.findIndex(contact => contact.id === id);
-      console.log(indexUpdateContact)
+      const indexUpdateContact = currentArrContacts.findIndex(contact => contact.id === payload.id);
       currentArrContacts.splice(indexUpdateContact,1,payload);
-      state.contacts.items = currentArrContacts;
-      // const contactArr = currentArrContacts.filter(contact => contact.id !== payload.id);
-      // state.contacts.items = [...contactArr, updatedContact];
+      const sortContacts = currentArrContacts.sort((a, b) => a.name > b.name ? 1 : -1);
+      state.contacts.items = sortContacts;
       state.loading = false;
     },
     [updateContact.rejected]: (state) => {

@@ -18,7 +18,7 @@ const registerSchema = yup.object().shape({
     
 });
 
-export default function RegisterView() {
+export default function RegisterPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { register, handleSubmit, formState } = useForm({

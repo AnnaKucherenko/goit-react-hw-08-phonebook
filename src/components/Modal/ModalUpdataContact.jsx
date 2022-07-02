@@ -1,7 +1,7 @@
 import { useEffect } from 'react'; 
 import {createPortal}from 'react-dom';
 import PropTypes from "prop-types";
-import FormUpdateContact from '../form/FormUpdateContact.js'
+import FormUpdateContact from '../Form/FormUpdateContact'
 import styles from './Modal.module.css';
 
 const modalRoot = document.querySelector('#modal-root');
@@ -19,9 +19,7 @@ export default function ModalUpdateContact ({id, name, number, onClose}) {
             window.removeEventListener('keydown', handleKeyDown);
         }
     },[onClose]);
-    console.log(id);
     
-
     const handleBackdropClick = evt =>{
         if(evt.currentTarget === evt.target){
             onClose();
@@ -43,6 +41,10 @@ export default function ModalUpdateContact ({id, name, number, onClose}) {
     
 }
 
+
 ModalUpdateContact.propTypes = {
     onClose: PropTypes.func.isRequired,
+    id:PropTypes.string.isRequired,
+    name:PropTypes.string.isRequired, 
+    number:PropTypes.string.isRequired, 
 }

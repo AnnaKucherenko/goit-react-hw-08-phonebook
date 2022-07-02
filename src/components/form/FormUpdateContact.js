@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import {updateContact} from '../../Redax/contacts/contactsSlice';
+import PropTypes from "prop-types";
 import styles from './FormAddContact.module.css';
 
 export default function FormUpdateContact ({id, updateName, updateNumber, onClose}){
@@ -90,4 +91,11 @@ export default function FormUpdateContact ({id, updateName, updateNumber, onClos
             </form>
         );
     
+}
+
+FormUpdateContact.propTypes = {
+    onClose: PropTypes.func.isRequired,
+    id:PropTypes.string.isRequired,
+    updateName:PropTypes.string.isRequired, 
+    updateNumber:PropTypes.string.isRequired, 
 }

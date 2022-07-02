@@ -1,7 +1,7 @@
 import { useEffect } from 'react'; 
 import {createPortal}from 'react-dom';
 import PropTypes from "prop-types";
-import FormAddContact from '../form/FormAddContact.js';
+import FormAddContact from '../Form/FormAddContact';
 // import FormUpdateContact from '../form/FormUpdateContact.js'
 import styles from './Modal.module.css';
 

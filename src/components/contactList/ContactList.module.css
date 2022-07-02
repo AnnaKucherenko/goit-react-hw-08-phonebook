@@ -1,8 +1,30 @@
 .buttonDelete{
     margin-left: 10px;
+    border: 1px solid rgb(184, 182, 182);
+    border-radius: 5px;
+    padding: 4px 4px;
 }
 
 .buttonDelete:hover {
-    border-radius: 3px;
-    background-color: rgb(48, 158, 255);
+    color: white;
+    background-color: rgb(127, 202, 186);;
+    
+}
+
+.contactItem{
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    border: 1px solid rgb(127, 202, 186);
+    border-radius: 6px;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.contactsList{
+ padding: 0;
+}
+
+.contactData{
+    margin: 4px 0px;
 }

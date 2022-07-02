@@ -2,7 +2,6 @@
 import React, { useEffect, useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {getContactsUser, deleteContact} from '../../Redax/contacts/contactsSlice';
-import ModalUpdataContact from 'components/Modal/ModalUpdataContact';
 import styles from './ContactList.module.css';
 import ModalUpdateContact from 'components/Modal/ModalUpdataContact';
 
@@ -14,11 +13,16 @@ function ContactList() {
     const [updateContactNumber, setupdateContactNumber] = useState('');
     const filter = useSelector((state) => state.persistedReducer.contacts.contacts.filter);
     const contacts = useSelector((state) => state.persistedReducer.contacts.contacts.items);
-    
+    console.log(contacts)
     useEffect(() => {
         dispatch(getContactsUser());
     }, [dispatch]);
 
+    // function SortArray(x, y){
+    //     return x.name.localeCompare(y.name);
+    // }
+    // const sortContacts = contacts.sort(SortArray);
+    
     const normalizedFilter = filter.toLowerCase();
     const visibleContact = contacts.filter(contact =>
         contact.name.toLowerCase().includes(normalizedFilter)
@@ -33,30 +37,29 @@ function ContactList() {
 
     return (
         <>
-        <ul>
+        <ul className={styles.contactsList}>
             {visibleContact.map(contact => (
                             
-                <li key={contact.id}>
-                    {showModal&&<ModalUpdateContact 
-                    id={contactId} 
-                    name={updateContactName} 
-                    number={updateContactNumber}
-                    onClose={toggleModal}/>}
-                    {contact.name}:  {contact.number}
-                    <button
-                        type="button"
-                        onClick={()=>dispatch(deleteContact(contact.id))}
-                        className={styles.buttonDelete}
-                        >
-                        Видалити
-                    </button>
-                    <button
-                        type="button"
-                        onClick={()=>toggleModal(contact.id, contact.name, contact.number )}
-                        className={styles.buttonDelete}
-                        >
-                        Редагувати
-                    </button>
+                <li key={contact.id} className={styles.contactItem}>
+                    {showModal&&<ModalUpdateContact id={contactId} name={updateContactName} number={updateContactNumber} onClose={toggleModal}/>}
+                    <p className={styles.contactData}>{contact.name}:  {contact.number}</p>
+                    <div>
+                        <button
+                            type="button"
+                            onClick={()=>dispatch(deleteContact(contact.id))}
+                            className={styles.buttonDelete}
+                            >
+                            Видалити
+                        </button>
+                        <button
+                            type="button"
+                            onClick={()=>toggleModal(contact.id, contact.name, contact.number )}
+                            className={styles.buttonDelete}
+                            >
+                            Редагувати
+                        </button>
+                    </div>
+                    
                 </li>
                 
                 
@@ -69,3 +72,5 @@ function ContactList() {
 }
 
 export default ContactList;
+
+
