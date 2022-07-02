@@ -5,7 +5,7 @@ import {
 import {setFilterContacts} from '../../Redax/contacts/contactsSlice';
 import styles from './Filter.module.css';
 
-function Filter() {
+export  function Filter() {
     const dispatch = useDispatch();
     const filter = useSelector((state) => state.persistedReducer.contacts.contacts.filter);
     const changeFilter = e => {
@@ -27,5 +27,3 @@ function Filter() {
     )
     
 }
-
-export default Filter;
