@@ -1,16 +1,17 @@
 import React from 'react';
+import InputMask from 'react-input-mask';
 import { useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-// import { useAddContactMutation } from 'Redax/contacts/contactsSlice';
-import {createNewContact} from '../../Redax/contacts/contactsSlice';
+import {createNewContact} from '../../Redux/contacts/contactsSlice';
 import PropTypes from "prop-types";
 import styles from './FormAddContact.module.css';
 
+
 export default function FormAddContact ({onClose}){
+    
     const dispatch= useDispatch();
     const [name, setName] = useState('');
     const [number, setNumber] = useState('');
-    // const [addContact, {isLoading}] = useAddContactMutation();
     const isLoading = useSelector((state) => state.persistedReducer.contacts.loading);
     const contacts = useSelector((state) => state.persistedReducer.contacts.contacts.items);
     
@@ -68,12 +69,16 @@ export default function FormAddContact ({onClose}){
                             onChange={handleChange}
                             className={styles.inputModal}
                         />
+                        
+                        
                     </div>
                     <div className={styles.inputForm}>
                         <label  htmlFor="number">
                             Number
                         </label>
-                        <input
+                        <InputMask 
+                            mask="+38(999) 999-99-99"
+                            maskChar={null}
                             type="tel"
                             name="number"
                             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -82,7 +87,10 @@ export default function FormAddContact ({onClose}){
                             value={number}
                             onChange={handleChange}
                             className={styles.inputModal}
+                            placeholder='(000) 000-00-00'                            
                         />
+                                               
+                        
                     </div>
                 <button type='submit' className={styles.buttontForm} disabled={isLoading}>Add contact</button>
             </div>

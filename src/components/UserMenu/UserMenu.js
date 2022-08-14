@@ -1,4 +1,4 @@
-import {logoutUser} from '../../Redax/auth/authSlice';
+import {logoutUser} from '../../Redux/auth/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import defaultAvatar from '../UserMenu/defaultAvatar.jpg';
 import style from '../UserMenu/UserMenu.module.css';

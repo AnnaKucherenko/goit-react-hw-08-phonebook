@@ -1,7 +1,6 @@
-// import { isDisabled } from '@testing-library/user-event/dist/utils';
 import React, { useEffect, useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {getContactsUser, deleteContact} from '../../Redax/contacts/contactsSlice';
+import {getContactsUser, deleteContact} from '../../Redux/contacts/contactsSlice';
 import ModalUpdateContact from '../Modal/ModalUpdateContact';
 import styles from './ContactList.module.css';
 
@@ -18,11 +17,6 @@ function ContactList() {
     useEffect(() => {
         dispatch(getContactsUser());
     }, [dispatch]);
-
-    // function SortArray(x, y){
-    //     return x.name.localeCompare(y.name);
-    // }
-    // const sortContacts = contacts.sort(SortArray);
     
     const normalizedFilter = filter.toLowerCase();
     const visibleContact = contacts.filter(contact =>

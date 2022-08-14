@@ -9,8 +9,6 @@ export default function HeaderBar() {
   return (
     <header className={ style.headerBar}>
       <Navigation />
-      {/* <AuthNav/>
-      <UserMenu/> */}
       {isLoggedIn ? <UserMenu /> : <AuthNav />}
     </header>
   );

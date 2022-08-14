@@ -1,14 +1,14 @@
 import React from 'react';
 import { useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import {updateContact} from '../../Redax/contacts/contactsSlice';
+import {updateContact} from '../../Redux/contacts/contactsSlice';
 import PropTypes from "prop-types";
 import styles from './FormAddContact.module.css';
 
 export default function FormUpdateContact ({id, updateName, updateNumber, onClose}){
     const dispatch= useDispatch();
-    const [name, setName] = useState('');
-    const [number, setNumber] = useState('');
+    const [name, setName] = useState(updateName);
+    const [number, setNumber] = useState(updateNumber);
     const isLoading = useSelector((state) => state.persistedReducer.contacts.loading);
         
     const handleChange = (event) => {
@@ -26,14 +26,7 @@ export default function FormUpdateContact ({id, updateName, updateNumber, onClos
         const name = e.currentTarget.elements.name.value;
         const number = e.currentTarget.elements.number.value;
         const contactData = {name,number};
-        
-        // const сontactToUpdate = contacts.find(contact => contact.id === id);
-        // console.log(сontactToUpdate);
-        
-        // const updatedName = сontactToUpdate.name;
-        // const updatedNumber = сontactToUpdate.number;
-        // const dataContact = {name,number};
-        
+                
         try{
             await dispatch(updateContact({id, contactData})).unwrap();
                 
@@ -82,7 +75,8 @@ export default function FormUpdateContact ({id, updateName, updateNumber, onClos
                             value={number}
                             onChange={handleChange}
                             className={styles.inputModal}
-                            placeholder={updateNumber}
+                            // placeholder={updateNumber}
+                            
                         />
                     </div>
                 <button type='submit' className={styles.buttontForm} disabled={isLoading}>Update contact</button>

@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useNavigate } from 'react-router-dom';
-import { registerUser } from '../../Redax/auth/authSlice';
+import { registerUser } from '../../Redux/auth/authSlice';
 
 import style from '../RegisterPage/RegisterPage.module.css';
 

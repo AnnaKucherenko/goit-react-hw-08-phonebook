@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useLocation, useNavigate, Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginUser } from 'Redax/auth/authSlice';
+import { loginUser } from 'Redux/auth/authSlice';
 
 import style from '../LoginPage/LoginPage.module.css'
 
@@ -36,8 +36,7 @@ export default function LoginPage() {
       console.log(error.message);
       
     }
-    // setEmail('');
-    // setPassword('');
+    
   };
 
   if (token&&status==="authorized") {

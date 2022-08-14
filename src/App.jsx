@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import {useDispatch} from 'react-redux';
-import { getCurrentUser } from './Redax/auth/authSlice';
+import { getCurrentUser } from './Redux/auth/authSlice';
 import { RequireAuth } from './components/RequireAuth';
 import HomePage  from './pages/HomePage/HomePage';
 import RegisterPage  from './pages/RegisterPage/RegisterPage';
