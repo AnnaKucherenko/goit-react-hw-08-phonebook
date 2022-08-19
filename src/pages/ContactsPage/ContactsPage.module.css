@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    
     height:100vh ;
 }
 
@@ -27,5 +26,22 @@
 }
 
 .title{
-    color: rgb(118, 121, 122);
+    color: rgb(127, 202, 186);
+    
 }
+
+.containerTitle{
+    display: flex;
+    align-items: center;
+}
+
+.containerLogo{
+    margin-right: 15px;
+    border: 5px solid rgb(127, 202, 186);
+    border-radius: 8px;
+    padding: 4px;
+    padding-bottom: 0px;
+    fill: rgb(127, 202, 186);
+    
+}
+
