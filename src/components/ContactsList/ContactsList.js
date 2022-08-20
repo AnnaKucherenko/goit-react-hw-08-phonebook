@@ -2,10 +2,12 @@ import React, { useEffect, useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {getContactsUser, deleteContact} from '../../Redux/contacts/contactsSlice';
 import ModalUpdateContact from '../Modal/ModalUpdateContact';
-import styles from './ContactList.module.css';
+import { DeleteSvgSelector } from './DeleteSvgSelector';
+import { RedactSvgSelector } from './RedactSvgSelector';
+import styles from './ContactsList.module.css';
 
 
-function ContactList() {
+function ContactsList() {
     const dispatch = useDispatch();
     const [showModal, setShowModal] = useState(false);
     const [contactId, setContactId] = useState('');
@@ -44,14 +46,16 @@ function ContactList() {
                             onClick={()=>dispatch(deleteContact(contact.id))}
                             className={styles.buttonDelete}
                             >
-                            Видалити
+                            <DeleteSvgSelector id='bin' />    
+                            {/* Видалити */}
                         </button>
                         <button
                             type="button"
                             onClick={()=>toggleModal(contact.id, contact.name, contact.number )}
                             className={styles.buttonDelete}
                             >
-                            Редагувати
+                            <RedactSvgSelector id='pencil' />
+                            {/* Редагувати */}
                         </button>
                     </div>
                     
@@ -66,6 +70,6 @@ function ContactList() {
    
 }
 
-export default ContactList;
+export default ContactsList;
 
 

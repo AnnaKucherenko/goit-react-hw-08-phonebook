@@ -1,7 +1,7 @@
 import React  from 'react';
 import { useState} from 'react';
 import {  useSelector } from 'react-redux';
-import ContactList from "../../components/ContactsList/ContactList";
+import ContactsList from "../../components/ContactsList/ContactsList";
 import {Filter} from '../../components/FilterContacts/Filter';
 import { Loader } from "components/Loader/Loader";
 import ModalAddContact from 'components/Modal/ModalAddContact';
@@ -30,7 +30,7 @@ export default function ContactsPage(){
         
         <Filter />
         {isLoader&&<Loader/>}
-        <ContactList />
+        <ContactsList />
     </div>
     )
 }
