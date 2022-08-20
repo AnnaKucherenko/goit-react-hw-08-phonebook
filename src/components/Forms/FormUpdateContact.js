@@ -59,7 +59,7 @@ export default function FormUpdateContact ({id, updateName, updateNumber, onClos
                             value={name}
                             onChange={handleChange}
                             className={styles.inputModal}
-                            placeholder={updateName}
+                            
                         />
                     </div>
                     <div className={styles.inputForm}>
@@ -75,7 +75,7 @@ export default function FormUpdateContact ({id, updateName, updateNumber, onClos
                             value={number}
                             onChange={handleChange}
                             className={styles.inputModal}
-                            // placeholder={updateNumber}
+                            
                             
                         />
                     </div>

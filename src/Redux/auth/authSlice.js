@@ -92,7 +92,7 @@ const userSlice = createSlice({
     [getCurrentUser.fulfilled]: (state) => {
       state.status = 'authorized';
       state.loading = false;
-      state.isLoggedIn = true;
+      // state.isLoggedIn = true;
     },
     [getCurrentUser.rejected]: (state) => {
       state.status = 'unauthorized';

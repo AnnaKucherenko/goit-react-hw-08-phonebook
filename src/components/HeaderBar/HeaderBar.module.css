@@ -5,6 +5,7 @@
 
 .headerBar{
   display: flex;
+  padding: 0 15px;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #5c6468;
