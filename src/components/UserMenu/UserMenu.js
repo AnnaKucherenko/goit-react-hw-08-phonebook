@@ -1,8 +1,8 @@
 import {logoutUser} from '../../Redux/auth/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import defaultAvatar from '../UserMenu/defaultAvatar.jpg';
-import style from '../UserMenu/UserMenu.module.css';
 import { useNavigate } from 'react-router-dom';
+import style from '../UserMenu/UserMenu.module.scss';
 
 export default function UserMenu() {
   const email = useSelector((state) => state.persistedReducer.auth.user.email);

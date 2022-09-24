@@ -1,0 +1,55 @@
+.contactsList{
+    padding:  0 15px;
+    width: 276px;
+    @media screen and (min-width: 480px) {
+        width: 320px;
+    }
+    @media screen and (min-width: 768px) {
+        width: 400px;
+    }
+}
+
+.contactItem{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    border: 1px solid rgb(127, 202, 186);
+    border-radius: 6px;
+    padding: 4px;
+    margin-bottom: 10px;
+    @media screen and (min-width: 768px) {
+        padding: 5px;
+    }
+}
+
+.contactData{
+    margin: 4px 0px;
+    font-size: 11px;
+    @media screen and (min-width: 480px) {
+        font-size: 12px;
+    }
+    @media screen and (min-width: 768px) {
+        font-size: 16px;
+    }
+}
+
+.buttonDelete{
+    width: 29px;
+    height: 29px;
+    margin-left: 4px;
+    border: 1px solid rgb(184, 182, 182);
+    border-radius: 5px;
+    padding: 3px 3px;
+    fill:rgb(127, 202, 186);
+    @media screen and (min-width: 768px) {
+        margin-left: 5px;
+    }
+}
+
+.buttonDelete:hover {
+    color: white;
+    background-color: rgb(127, 202, 186);;
+    fill: white;
+}
+

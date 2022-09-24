@@ -1,10 +1,13 @@
 .formContact{
-    width: 280px;
+    width: 238px;
     border: 4px solid;
     border-radius: 20px;
     border-color: rgb(127, 202, 186);
     padding:14px;
     background-color: white;
+    @media screen and (min-width: 768px) {
+        width: 280px;
+    }
 }
 
 .inputForm{

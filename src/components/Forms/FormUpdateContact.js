@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import {updateContact} from '../../Redux/contacts/contactsSlice';
 import PropTypes from "prop-types";
-import styles from './FormAddContact.module.css';
+import styles from './FormAddContact.module.scss';
 
 export default function FormUpdateContact ({id, updateName, updateNumber, onClose}){
     const dispatch= useDispatch();
@@ -48,7 +48,7 @@ export default function FormUpdateContact ({id, updateName, updateNumber, onClos
                 <div className={styles.formContact} >
                     <div className={styles.inputForm}>
                         <label  htmlFor="name">
-                            Name
+                            Ім`я
                         </label>
                         <input
                             type="text"
@@ -64,7 +64,7 @@ export default function FormUpdateContact ({id, updateName, updateNumber, onClos
                     </div>
                     <div className={styles.inputForm}>
                         <label  htmlFor="number">
-                            Number
+                            Номер телефону
                         </label>
                         <input
                             type="tel"
@@ -79,7 +79,7 @@ export default function FormUpdateContact ({id, updateName, updateNumber, onClos
                             
                         />
                     </div>
-                <button type='submit' className={styles.buttontForm} disabled={isLoading}>Update contact</button>
+                <button type='submit' className={styles.buttontForm} disabled={isLoading}>Оновити контакт</button>
             </div>
            
             </form>

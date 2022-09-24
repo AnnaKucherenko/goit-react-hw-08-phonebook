@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import {createNewContact} from '../../Redux/contacts/contactsSlice';
 import PropTypes from "prop-types";
-import styles from './FormAddContact.module.css';
+import styles from './FormAddContact.module.scss';
 
 
 export default function FormAddContact ({onClose}){
@@ -57,7 +57,7 @@ export default function FormAddContact ({onClose}){
                 <div className={styles.formContact} >
                     <div className={styles.inputForm}>
                         <label  htmlFor="name">
-                            Name
+                            Ім`я
                         </label>
                         <input
                             type="text"
@@ -74,7 +74,7 @@ export default function FormAddContact ({onClose}){
                     </div>
                     <div className={styles.inputForm}>
                         <label  htmlFor="number">
-                            Number
+                            Номер телефону
                         </label>
                         <InputMask 
                             mask="+38(999) 999-99-99"
@@ -92,7 +92,7 @@ export default function FormAddContact ({onClose}){
                                                
                         
                     </div>
-                <button type='submit' className={styles.buttontForm} disabled={isLoading}>Add contact</button>
+                <button type='submit' className={styles.buttontForm} disabled={isLoading}>Додати контакт</button>
             </div>
            
             </form>

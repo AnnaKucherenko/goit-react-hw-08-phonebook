@@ -6,7 +6,7 @@ import {Filter} from '../../components/FilterContacts/Filter';
 import { Loader } from "components/Loader/Loader";
 import ModalAddContact from 'components/Modal/ModalAddContact';
 import {ContactsSvgSelector} from './ContactsSvgSelector';
-import style from '../ContactsPage/ContactsPage.module.css';
+import style from '../ContactsPage/ContactsPage.module.scss';
 
 
 export default function ContactsPage(){

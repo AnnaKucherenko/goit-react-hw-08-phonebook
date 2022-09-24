@@ -5,7 +5,7 @@ import * as yup from 'yup';
 import { useNavigate } from 'react-router-dom';
 import { registerUser } from '../../Redux/auth/authSlice';
 
-import style from '../RegisterPage/RegisterPage.module.css';
+import style from '../RegisterPage/RegisterPage.module.scss';
 
 
 const registerSchema = yup.object().shape({

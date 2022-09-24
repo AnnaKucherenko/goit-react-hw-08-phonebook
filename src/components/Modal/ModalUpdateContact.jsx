@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import {createPortal}from 'react-dom';
 import PropTypes from "prop-types";
 import FormUpdateContact from '../Forms/FormUpdateContact'
-import styles from './Modal.module.css';
+import styles from './Modal.module.scss';
 
 const modalRoot = document.querySelector('#modal-root');
 

@@ -1,0 +1,72 @@
+.container {
+  padding: 0 15px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0.4)
+    ),
+    url('../../images/1545674095123.jpg');
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.title {
+  margin: 0;
+  font-weight: 700;
+  font-size: 48px;
+  text-align: center;
+  color: white;
+  @media screen and (max-width: 767px) {
+    font-size: 24px;
+  }
+}
+
+.text {
+  font-size: 24px;
+  color: white;
+  font-weight: 700;
+  text-align: center;
+  @media screen and (max-width: 767px) {
+    font-size: 18px;
+  }
+}
+
+.button {
+  margin-top: 20px;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  @media screen and (max-width: 767px) {
+    font-size: 12px;
+  }
+}
+
+.buttonLogin {
+  cursor: pointer;
+  margin-top: 20px;
+  padding: 6px 16px;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  @media screen and (max-width: 767px) {
+    font-size: 12px;
+  }
+}
+
+.button:hover,
+.buttonLogin:hover,
+.button:focus,
+.buttonLogin:focus {
+  background-color: rgb(127, 202, 186);
+  color: white;
+  cursor: pointer;
+}

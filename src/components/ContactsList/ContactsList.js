@@ -4,7 +4,7 @@ import {getContactsUser, deleteContact} from '../../Redux/contacts/contactsSlice
 import ModalUpdateContact from '../Modal/ModalUpdateContact';
 import { DeleteSvgSelector } from './DeleteSvgSelector';
 import { RedactSvgSelector } from './RedactSvgSelector';
-import styles from './ContactsList.module.css';
+import style from './ContactsList.module.scss';
 
 
 function ContactsList() {
@@ -34,27 +34,27 @@ function ContactsList() {
 
     return (
         <>
-        <ul className={styles.contactsList}>
+        <ul className={style.contactsList}>
             {visibleContact.map(contact => (
                             
-                <li key={contact.id} className={styles.contactItem}>
+                <li key={contact.id} className={style.contactItem}>
                     {showModal&&<ModalUpdateContact id={contactId} name={updateContactName} number={updateContactNumber} onClose={toggleModal}/>}
-                    <p className={styles.contactData}>{contact.name}:  {contact.number}</p>
+                    <p className={style.contactData}>{contact.name}:  {contact.number}</p>
                     <div>
                         <button
                             type="button"
                             onClick={()=>dispatch(deleteContact(contact.id))}
-                            className={styles.buttonDelete}
+                            className={style.buttonDelete}
                             >
-                            <DeleteSvgSelector id='bin' />    
+                            <DeleteSvgSelector id='icon' />    
                             {/* Видалити */}
                         </button>
                         <button
                             type="button"
                             onClick={()=>toggleModal(contact.id, contact.name, contact.number )}
-                            className={styles.buttonDelete}
+                            className={style.buttonDelete}
                             >
-                            <RedactSvgSelector id='pencil' />
+                            <RedactSvgSelector id='icon' />
                             {/* Редагувати */}
                         </button>
                     </div>

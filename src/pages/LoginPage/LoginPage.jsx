@@ -3,7 +3,7 @@ import { useLocation, useNavigate, Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from 'Redux/auth/authSlice';
 
-import style from '../LoginPage/LoginPage.module.css'
+import style from '../LoginPage/LoginPage.module.scss'
 
 export default function LoginPage() {
   const token = useSelector((state) => state.persistedReducer.auth.token);
